@@ -21,7 +21,7 @@ Site statique hébergé sur GitHub Pages.
 2. Uploadez tous ces fichiers **en conservant la structure de dossiers**
 3. Allez dans **Settings → Pages**
 4. Source : `Deploy from a branch` → `main` → `/ (root)`
-5. Votre site sera disponible à `https://votrepseudo.github.io/francois-eyden-mariage`
+5. Votre site sera disponible à `[https://francoisbedard07-ux.github.io/mariage-francois-eyden/]`
 
 ## Personnalisation
 
