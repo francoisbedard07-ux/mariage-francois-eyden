@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>François & Eyden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --burgundy:    #6b1f2a;
+  --burgundy-dk: #4a1219;
+  --burgundy-lt: #8f3040;
+  --forest:      #2d4a35;
+  --forest-lt:   #3d6347;
+  --white:       #fdfcfb;
+  --off-white:   #f5f0eb;
+  --warm-grey:   #e0d8d0;
+  --text:        #2a1f1a;
+  --text-soft:   #5a4a42;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--white); color:var(--text); font-family:'Raleway',sans-serif; font-weight:300; overflow-x:hidden; }
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--off-white); }
+::-webkit-scrollbar-thumb { background:var(--burgundy); }
+
+/* NAV */
+nav {
+  position:fixed; top:0; width:100%; z-index:200;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.4rem 4rem;
+  background:rgba(253,252,251,0.94); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(107,31,42,0.12);
+}
+.nav-monogram { font-family:'Playfair Display',serif; font-style:italic; font-size:1.3rem; color:var(--burgundy); }
+.nav-links { display:flex; gap:2.5rem; }
+.nav-links a { text-decoration:none; font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-soft); transition:color 0.3s; }
+.nav-links a:hover { color:var(--burgundy); }
+
+/* HERO — full photo background */
+#hero {
+  height:100vh; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background-image: url('images/hero-ecosse.jpg');
+  background-size:cover; background-position:center 60%;
+  transform:scale(1.05);
+  transition: transform 8s ease;
+}
+#hero:hover .hero-bg { transform:scale(1); }
+.hero-overlay {
+  position:absolute; inset:0;
+  background: linear-gradient(
+    to bottom,
+    rgba(45,74,53,0.35) 0%,
+    rgba(0,0,0,0.25) 40%,
+    rgba(74,18,25,0.55) 100%
+  );
+}
+.hero-content {
+  position:relative; z-index:1;
+  text-align:center; color:var(--white);
+  padding: 2rem;
+}
+.hero-eyebrow {
+  font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase;
+  color:rgba(255,255,255,0.6); margin-bottom:1.5rem;
+  animation: fadeUp 1s ease both;
+}
+.hero-names {
+  font-family:'Playfair Display',serif; font-weight:400;
+  font-size:clamp(3.5rem,10vw,8rem); line-height:1;
+  animation: fadeUp 1s ease 0.15s both;
+}
+.hero-names em { font-style:italic; }
+.hero-amp {
+  display:block; font-family:'Playfair Display',serif; font-style:italic;
+  font-size:0.35em; color:rgba(255,255,255,0.55); margin:0.3rem 0;
+  letter-spacing:0.1em;
+}
+.hero-divider {
+  width:80px; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent);
+  margin:2rem auto; animation: fadeUp 1s ease 0.3s both;
+}
+.hero-date {
+  font-size:0.75rem; letter-spacing:0.28em; text-transform:uppercase;
+  color:rgba(255,255,255,0.7); animation:fadeUp 1s ease 0.4s both;
+}
+.hero-scroll {
+  position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+  font-size:0.58rem; letter-spacing:0.25em; text-transform:uppercase;
+  color:rgba(255,255,255,0.4); animation:bounceDown 3s ease-in-out infinite 1.5s;
+}
+.hero-scroll-line { width:1px; height:32px; background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent); }
+
+/* PHOTO STRIP */
+.photo-strip {
+  display:grid; grid-template-columns:repeat(3,1fr); height:480px;
+}
+.strip-photo {
+  overflow:hidden; position:relative; cursor:pointer;
+}
+.strip-photo img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 0.7s ease, filter 0.4s ease;
+  filter:brightness(0.88) saturate(1.1);
+}
+.strip-photo:hover img { transform:scale(1.06); filter:brightness(1) saturate(1.2); }
+.strip-photo-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(74,18,25,0.45) 0%, transparent 50%);
+  opacity:0; transition:opacity 0.4s;
+}
+.strip-photo:hover .strip-photo-overlay { opacity:1; }
+.strip-caption {
+  position:absolute; bottom:1.5rem; left:0; right:0; text-align:center;
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:0.95rem; color:rgba(255,255,255,0.9);
+  opacity:0; transform:translateY(8px); transition:opacity 0.4s, transform 0.4s;
+}
+.strip-photo:hover .strip-caption { opacity:1; transform:translateY(0); }
+
+/* COUNTDOWN */
+#countdown {
+  background:var(--forest); color:var(--white);
+  padding:8rem 2rem; position:relative; overflow:hidden;
+}
+#countdown::before {
+  content:''; position:absolute; inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.s-label { font-size:0.65rem; letter-spacing:0.32em; text-transform:uppercase; text-align:center; margin-bottom:0.8rem; }
+.s-title { font-family:'Playfair Display',serif; font-weight:400; font-size:clamp(2rem,4vw,3.2rem); text-align:center; margin-bottom:1rem; }
+.s-title em { font-style:italic; }
+.s-rule { display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:4rem; }
+.s-rule::before,.s-rule::after { content:''; flex:0 0 60px; height:1px; }
+.s-diamond { width:6px; height:6px; transform:rotate(45deg); }
+#countdown .s-label { color:rgba(255,255,255,0.5); }
+#countdown .s-title { color:var(--white); }
+#countdown .s-rule::before,#countdown .s-rule::after { background:rgba(255,255,255,0.2); }
+#countdown .s-diamond { background:rgba(255,255,255,0.4); }
+
+.cd-grid {
+  max-width:760px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;
+  position:relative; z-index:1;
+}
+.cd-block {
+  display:flex; flex-direction:column; align-items:center;
+  padding:2.5rem 1rem;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.04);
+  position:relative;
+}
+.cd-block::before,.cd-block::after {
+  content:''; position:absolute;
+  width:10px; height:10px;
+  border-color:rgba(255,255,255,0.2); border-style:solid;
+}
+.cd-block::before { top:-1px; left:-1px; border-width:1px 0 0 1px; }
+.cd-block::after  { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+.cd-num { font-family:'Playfair Display',serif; font-size:clamp(3rem,5vw,4.5rem); color:var(--white); line-height:1; }
+.cd-lbl { margin-top:0.7rem; font-size:0.6rem; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+.cd-msg { text-align:center; margin-top:3rem; font-family:'Playfair Display',serif; font-style:italic; font-size:0.85rem; color:rgba(255,255,255,0.3); position:relative;z-index:1; }
+
+/* PROPOSAL SECTION */
+#proposal {
+  position:relative; height:70vh; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.proposal-bg {
+  position:absolute; inset:0;
+  background-image:url('images/proposal-lavandes.jpg');
+  background-size:cover; background-position:center;
+}
+.proposal-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(74,18,25,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(45,74,53,0.6) 100%);
+}
+.proposal-text {
+  position:relative; z-index:1; text-align:center; color:var(--white); padding:2rem;
+}
+.proposal-eyebrow { font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1rem; }
+.proposal-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,4rem); font-weight:400; font-style:italic; margin-bottom:1rem; }
+.proposal-sub { font-size:0.82rem; letter-spacing:0.12em; color:rgba(255,255,255,0.65); max-width:400px; margin:0 auto; line-height:1.8; }
+
+/* RSVP */
+#rsvp {
+  background:var(--white); padding:8rem 2rem; position:relative;
+}
+#rsvp::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--forest),var(--burgundy));
+}
+#rsvp .s-label { color:var(--burgundy); }
+#rsvp .s-rule::before,#rsvp .s-rule::after { background:var(--warm-grey); }
+#rsvp .s-diamond { background:var(--burgundy); }
+
+.rsvp-wrap { max-width:620px; margin:0 auto; }
+.rsvp-intro {
+  text-align:center; font-family:'Playfair Display',serif; font-style:italic;
+  font-size:0.9rem; line-height:1.9; color:var(--text-soft); margin-bottom:3rem;
+}
+.rsvp-form { display:flex; flex-direction:column; gap:1.3rem; }
+.f-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.f-group { display:flex; flex-direction:column; gap:0.45rem; }
+.f-group label { font-size:0.6rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--text-soft); }
+.f-group input,.f-group select,.f-group textarea {
+  background:var(--off-white); border:1px solid var(--warm-grey);
+  border-bottom:2px solid var(--warm-grey); color:var(--text);
+  padding:0.9rem 1rem; font-family:'Raleway',sans-serif; font-size:0.88rem;
+  font-weight:300; outline:none; transition:border-color 0.3s; width:100%; appearance:none;
+}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus {
+  border-color:var(--forest); border-bottom-color:var(--forest); background:var(--white);
+}
+.presence-toggle { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--warm-grey); }
+.presence-btn {
+  padding:0.9rem; font-family:'Raleway',sans-serif; font-size:0.7rem;
+  letter-spacing:0.15em; text-transform:uppercase; background:var(--off-white);
+  border:none; color:var(--text-soft); cursor:pointer; transition:background 0.3s,color 0.3s;
+}
+.presence-btn:first-child { border-right:1px solid var(--warm-grey); }
+.presence-btn.ay { background:var(--forest); color:var(--white); }
+.presence-btn.an { background:var(--burgundy); color:var(--white); }
+.submit-btn {
+  margin-top:0.6rem; padding:1.1rem; background:var(--burgundy); color:var(--white);
+  border:none; font-family:'Raleway',sans-serif; font-size:0.72rem;
+  letter-spacing:0.28em; text-transform:uppercase; cursor:pointer;
+  transition:background 0.4s;
+}
+.submit-btn:hover { background:var(--forest); }
+.rsvp-ok { display:none; text-align:center; padding:4rem 2rem; }
+.rsvp-ok-icon { font-size:2.5rem; margin-bottom:1.2rem; }
+.rsvp-ok-title { font-family:'Playfair Display',serif; font-style:italic; font-size:2rem; color:var(--forest); margin-bottom:0.8rem; }
+.rsvp-ok-msg { font-size:0.88rem; color:var(--text-soft); line-height:1.8; }
+
+/* FOOTER */
+footer {
+  background:var(--burgundy-dk); color:rgba(255,255,255,0.5);
+  padding:4rem 2rem; text-align:center; position:relative;
+}
+footer::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--forest),var(--burgundy-lt),var(--forest));
+}
+.foot-names { font-family:'Playfair Display',serif; font-style:italic; font-size:2rem; color:rgba(255,255,255,0.85); margin-bottom:0.8rem; }
+.foot-detail { font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; line-height:2; }
+
+/* ANIMATIONS */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.9s,transform 0.9s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.d1 { transition-delay:0.1s; } .d2 { transition-delay:0.2s; } .d3 { transition-delay:0.3s; } .d4 { transition-delay:0.4s; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes bounceDown { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+@media(max-width:700px){
+  nav { padding:1rem 1.5rem; } .nav-links { gap:1.2rem; } .nav-links a { font-size:0.58rem; }
+  .photo-strip { grid-template-columns:1fr; height:auto; }
+  .strip-photo { height:300px; }
+  .cd-grid { grid-template-columns:repeat(2,1fr); }
+  .f-row { grid-template-columns:1fr; }
+}
+
+/* LIEU */
+#lieu {
+  background: var(--off-white); padding: 8rem 2rem; position: relative;
+}
+#lieu::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--burgundy),var(--forest));
+}
+#lieu .s-label { color: var(--forest); }
+#lieu .s-rule::before,#lieu .s-rule::after { background: var(--warm-grey); }
+#lieu .s-diamond { background: var(--forest); }
+
+.lieu-grid {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 1px solid var(--warm-grey);
+  overflow: hidden;
+}
+.lieu-photo {
+  position: relative; overflow: hidden; min-height: 500px;
+}
+.lieu-photo img {
+  width:100%; height:100%; object-fit:cover;
+  transition: transform 0.8s ease;
+  filter: brightness(0.82) saturate(1.1);
+}
+.lieu-photo:hover img { transform: scale(1.05); }
+.lieu-photo-overlay {
+  position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(45,74,53,0.7) 0%, rgba(0,0,0,0.1) 60%);
+}
+.lieu-photo-badge {
+  position:absolute; bottom:2.5rem; left:2rem; right:2rem;
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:1.4rem; color:var(--white);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+.lieu-photo-badge span {
+  display:block; font-family:'Raleway',sans-serif; font-style:normal;
+  font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+  color:rgba(255,255,255,0.6); margin-bottom:0.4rem;
+}
+.lieu-info {
+  background: var(--white);
+  padding: 3.5rem 3rem;
+  display: flex; flex-direction: column; justify-content: center;
+  border-left: 1px solid var(--warm-grey);
+}
+.lieu-name {
+  font-family: 'Playfair Display', serif; font-weight:400;
+  font-size: 2rem; color: #2a1f1a; margin-bottom:0.3rem;
+}
+.lieu-location {
+  font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase;
+  color: var(--forest); margin-bottom:2rem;
+}
+.lieu-desc {
+  font-size:0.88rem; line-height:1.9; color:var(--text-soft);
+  margin-bottom:2rem; font-family:'Playfair Display',serif; font-style:italic;
+}
+.lieu-stats {
+  display:flex; gap:2.5rem; padding:1.5rem 0;
+  border-top:1px solid var(--warm-grey);
+  border-bottom:1px solid var(--warm-grey);
+  margin-bottom:2rem;
+}
+.lieu-stat-num {
+  font-family:'Playfair Display',serif; font-size:2.2rem;
+  color:var(--burgundy); line-height:1;
+}
+.lieu-stat-lbl {
+  font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--text-soft); margin-top:0.3rem;
+}
+.lieu-features {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:0.9rem; margin-bottom:2.5rem;
+}
+.lieu-feature {
+  display:flex; align-items:flex-start; gap:0.6rem;
+}
+.lieu-feature-icon {
+  width:28px; height:28px; flex-shrink:0;
+  background:#e8eeea; display:flex; align-items:center; justify-content:center;
+  font-size:0.85rem; border-left:2px solid var(--forest);
+}
+.lieu-feature-text {
+  font-size:0.76rem; line-height:1.5; color:var(--text-soft);
+}
+.lieu-feature-text strong {
+  display:block; font-size:0.62rem; letter-spacing:0.14em;
+  text-transform:uppercase; color:#2a1f1a; margin-bottom:0.1rem; font-weight:400;
+}
+.lieu-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-primary {
+  padding:0.85rem 1.8rem; background:var(--forest); color:var(--white);
+  border:none; font-family:'Raleway',sans-serif; font-size:0.68rem;
+  letter-spacing:0.22em; text-transform:uppercase; cursor:pointer;
+  text-decoration:none; display:inline-block; transition:background 0.3s;
+}
+.btn-primary:hover { background:var(--burgundy); }
+.btn-outline {
+  padding:0.85rem 1.8rem; background:transparent; color:var(--forest);
+  border:1px solid var(--forest); font-family:'Raleway',sans-serif;
+  font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase;
+  cursor:pointer; text-decoration:none; display:inline-block; transition:all 0.3s;
+}
+.btn-outline:hover { background:var(--forest); color:var(--white); }
+
+.lieu-map-wrap {
+  max-width:1000px; margin:2rem auto 0;
+  border:1px solid var(--warm-grey); overflow:hidden;
+}
+.lieu-map-wrap iframe { display:block; width:100%; height:340px; border:0; }
+
+@media(max-width:700px){
+  .lieu-grid { grid-template-columns:1fr; }
+  .lieu-photo { min-height:280px; }
+  .lieu-info { padding:2rem 1.5rem; }
+  .lieu-features { grid-template-columns:1fr; }
+  .lieu-stats { gap:1.5rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-monogram">F & E</div>
+  <div class="nav-links">
+    <a href="#hero">Accueil</a>
+    <a href="#countdown">Compte à rebours</a>
+    <a href="#lieu">Le lieu</a>
+    <a href="#rsvp">RSVP</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Nous vous invitons à notre mariage</p>
+    <h1 class="hero-names">
+      François<span class="hero-amp">&amp;</span>Eyden
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-date">1er Juillet 2027</p>
+  </div>
+  <div class="hero-scroll">Découvrir<div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="strip-photo">
+    <img src="images/hero-ecosse.jpg" alt="François et Eyden en Écosse">
+    <div class="strip-photo-overlay"></div>
+    <p class="strip-caption">Écosse, 2022</p>
+  </div>
+  <div class="strip-photo">
+    <img src="images/strip-lavandes-panorama.jpg" alt="Dans les lavandes">
+    <div class="strip-photo-overlay"></div>
+    <p class="strip-caption">Provence, 2024</p>
+  </div>
+  <div class="strip-photo">
+    <img src="images/strip-bague.jpg" alt="La bague">
+    <div class="strip-photo-overlay"></div>
+    <p class="strip-caption">La bague ✦</p>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<section id="countdown">
+  <p class="s-label reveal">Le grand jour approche</p>
+  <h2 class="s-title reveal">Compte à <em>Rebours</em></h2>
+  <div class="s-rule reveal"><span></span><span class="s-diamond"></span><span></span></div>
+  <div class="cd-grid">
+    <div class="cd-block reveal d1"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">Jours</span></div>
+    <div class="cd-block reveal d2"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">Heures</span></div>
+    <div class="cd-block reveal d3"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">Minutes</span></div>
+    <div class="cd-block reveal d4"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">Secondes</span></div>
+  </div>
+  <p class="cd-msg reveal">« Chaque seconde nous rapproche du plus beau jour de notre vie »</p>
+</section>
+
+<!-- PROPOSAL SECTION -->
+<section id="proposal">
+  <div class="proposal-bg"></div>
+  <div class="proposal-overlay"></div>
+  <div class="proposal-text">
+    <p class="proposal-eyebrow">Provence · Juillet 2024</p>
+    <h2 class="proposal-title">La demande</h2>
+    <p class="proposal-sub">Au milieu des champs de lavande, François a posé un genou à terre. Eyden a dit oui.</p>
+  </div>
+</section>
+
+
+<!-- LIEU -->
+<section id="lieu">
+  <p class="s-label reveal">Où nous retrouver</p>
+  <h2 class="s-title reveal">Le <em>Lieu</em></h2>
+  <div class="s-rule reveal"><span></span><span class="s-diamond"></span><span></span></div>
+
+  <div class="lieu-grid reveal">
+    <div class="lieu-photo">
+      <img src="https://static.wixstatic.com/media/8abc2e_316afc280ca04149a4d04f0f83af7209~mv2.jpg/v1/fill/w_980,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/8abc2e_316afc280ca04149a4d04f0f83af7209~mv2.jpg" alt="Domaine 360 vue panoramique">
+      <div class="lieu-photo-overlay"></div>
+      <div class="lieu-photo-badge">
+        <span>Saint-Denis-de-Brompton · Cantons-de-l'Est</span>
+        Domaine 360
+      </div>
+    </div>
+
+    <div class="lieu-info">
+      <h3 class="lieu-name">Domaine 360</h3>
+      <p class="lieu-location">📍 Saint-Denis-de-Brompton, Cantons-de-l'Est</p>
+      <p class="lieu-desc">Niché dans les Cantons-de-l'Est, le Domaine 360 se distingue par son charme rustique et sa vue imprenable sur le lac Brompton — un cadre exceptionnel pour célébrer notre union.</p>
+
+      <div class="lieu-stats">
+        <div class="lieu-stat">
+          <div class="lieu-stat-num">80</div>
+          <div class="lieu-stat-lbl">Invités max</div>
+        </div>
+        <div class="lieu-stat">
+          <div class="lieu-stat-num">33</div>
+          <div class="lieu-stat-lbl">Places héberg.</div>
+        </div>
+        <div class="lieu-stat">
+          <div class="lieu-stat-num">50</div>
+          <div class="lieu-stat-lbl">Acres de terrain</div>
+        </div>
+      </div>
+
+      <div class="lieu-features">
+        <div class="lieu-feature">
+          <div class="lieu-feature-icon">🌿</div>
+          <div class="lieu-feature-text"><strong>Cérémonie</strong>Espace extérieur avec vue panoramique</div>
+        </div>
+        <div class="lieu-feature">
+          <div class="lieu-feature-icon">🛏</div>
+          <div class="lieu-feature-text"><strong>Hébergement</strong>9 chambres · 33 personnes sur place</div>
+        </div>
+        <div class="lieu-feature">
+          <div class="lieu-feature-icon">🌲</div>
+          <div class="lieu-feature-text"><strong>Nature</strong>Sentiers pédestres · Terrain boisé</div>
+        </div>
+        <div class="lieu-feature">
+          <div class="lieu-feature-icon">♨️</div>
+          <div class="lieu-feature-text"><strong>Détente</strong>Spa · Sauna · Feu de camp</div>
+        </div>
+        <div class="lieu-feature">
+          <div class="lieu-feature-icon">🍽</div>
+          <div class="lieu-feature-text"><strong>Réception</strong>Verrière salle à manger · Cuisine autonome</div>
+        </div>
+        <div class="lieu-feature">
+          <div class="lieu-feature-icon">🏔</div>
+          <div class="lieu-feature-text"><strong>Vue</strong>Lac Brompton · 3 balcons panoramiques</div>
+        </div>
+      </div>
+
+      <div class="lieu-btns">
+        <a href="https://www.leschaletsnature.com/domaine360" target="_blank" class="btn-primary">Visiter le site</a>
+        <a href="https://maps.google.com/?q=Domaine+360+Saint-Denis-de-Brompton+Quebec" target="_blank" class="btn-outline">Voir sur la carte</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="lieu-map-wrap reveal">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.0!2d-71.9!3d45.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cb7acf0e0000001%3A0x0!2sDomaine+360%2C+Saint-Denis-de-Brompton%2C+QC!5e0!3m2!1sfr!2sca!4v1"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Domaine 360 - Saint-Denis-de-Brompton">
+    </iframe>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <p class="s-label reveal">Confirmez votre présence</p>
+  <h2 class="s-title reveal">RSVP</h2>
+  <div class="s-rule reveal"><span></span><span class="s-diamond"></span><span></span></div>
+
+  <div class="rsvp-wrap">
+    <p class="rsvp-intro reveal">Nous serions honorés de vous compter parmi nous.<br>Merci de confirmer avant le <strong>1er juin 2027</strong>.</p>
+    <div class="rsvp-form reveal" id="rsvpForm">
+      <div class="f-row">
+        <div class="f-group"><label>Prénom</label><input type="text" placeholder="Marie"></div>
+        <div class="f-group"><label>Nom</label><input type="text" placeholder="Dupont"></div>
+      </div>
+      <div class="f-group"><label>Adresse e-mail</label><input type="email" placeholder="marie@exemple.fr"></div>
+      <div class="f-group">
+        <label>Serez-vous présent(e) ?</label>
+        <div class="presence-toggle">
+          <button class="presence-btn ay" id="btn-yes" onclick="setPres('yes')">✓ &nbsp;Avec joie !</button>
+          <button class="presence-btn" id="btn-no" onclick="setPres('no')">✗ &nbsp;Je ne pourrai pas</button>
+        </div>
+      </div>
+      <div class="f-group"><label>Nombre de personnes</label>
+        <select><option>1 personne</option><option>2 personnes</option><option>3 personnes</option><option>4+</option></select>
+      </div>
+      <div class="f-group"><label>Message &amp; régime alimentaire</label>
+        <textarea rows="3" placeholder="Allergie, message aux mariés…"></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitRsvp()">Confirmer ma présence</button>
+    </div>
+    <div class="rsvp-ok" id="rsvpOk">
+      <div class="rsvp-ok-icon">💌</div>
+      <h3 class="rsvp-ok-title">Merci, c'est confirmé !</h3>
+      <p class="rsvp-ok-msg">François &amp; Eyden sont touchés par votre réponse.<br>À très bientôt !</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-names">François & Eyden</div>
+  <div class="foot-detail">1er Juillet 2027 · Avec tout notre amour</div>
+</footer>
+
+<script>
+// COUNTDOWN
+const wd = new Date('2027-07-01T11:00:00');
+function pad(n){return String(n).padStart(2,'0');}
+function tick(){
+  const d=wd-new Date();
+  if(d<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');return;}
+  document.getElementById('cd-d').textContent=pad(Math.floor(d/86400000));
+  document.getElementById('cd-h').textContent=pad(Math.floor((d%86400000)/3600000));
+  document.getElementById('cd-m').textContent=pad(Math.floor((d%3600000)/60000));
+  document.getElementById('cd-s').textContent=pad(Math.floor((d%60000)/1000));
+}
+tick(); setInterval(tick,1000);
+
+// PRESENCE
+function setPres(v){
+  document.getElementById('btn-yes').className='presence-btn'+(v==='yes'?' ay':'');
+  document.getElementById('btn-no').className='presence-btn'+(v==='no'?' an':'');
+}
+
+// RSVP
+function submitRsvp(){
+  const f=document.getElementById('rsvpForm');
+  const ok=document.getElementById('rsvpOk');
+  f.style.transition='opacity 0.4s'; f.style.opacity='0';
+  setTimeout(()=>{f.style.display='none'; ok.style.display='block'; ok.style.opacity='0'; ok.style.transition='opacity 0.6s'; requestAnimationFrame(()=>ok.style.opacity='1');},400);
+}
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{
+  if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60); obs.unobserve(e.target);}
+},{threshold:0.1}));
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
