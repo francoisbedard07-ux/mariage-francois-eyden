@@ -194,11 +194,11 @@ nav a:hover{color:#fff;}
 .faq-list{max-width:700px;width:100%;margin:2.5rem auto 0;border-radius:16px;overflow:hidden;border:2px solid var(--burgundy);}
 .faq-item{border-bottom:2px solid var(--burgundy);overflow:hidden;}
 .faq-item:first-child{border-top:none;}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 1rem;cursor:pointer;font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--burgundy);user-select:none;transition:color .2s;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 2rem;cursor:pointer;font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--burgundy);user-select:none;transition:color .2s;}
 .faq-q:hover{color:var(--sage-dark);}
 .faq-chevron{font-size:.75rem;color:var(--sage-dark);flex-shrink:0;transition:transform .35s ease;}
 .faq-item.open .faq-chevron{transform:rotate(180deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;font-size:.9rem;color:var(--text-mid);line-height:1.85;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding-left:3.5rem;padding-right:3.5rem;font-size:.9rem;color:var(--text-mid);line-height:1.85;}
 .faq-item.open .faq-a{max-height:400px;padding-bottom:1.3rem;}
 
 /*  CONTACT  */
@@ -438,14 +438,12 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
   <div class="faq-body">
     <div class="faq-list reveal">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Quelle est la date et l&#8217;heure de la c&#233;r&#233;monie&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">La c&#233;r&#233;monie aura lieu le jeudi 1er juillet 2027 au Domaine 360 &#224; Saint-Denis-de-Brompton, Qu&#233;bec. Les d&#233;tails pr&#233;cis concernant l&#8217;heure seront communiqu&#233;s prochainement.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Y a-t-il un code vestimentaire&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">La tenue de soir&#233;e est souhait&#233;e. Les couleurs blanches et cr&#232;me sont r&#233;serv&#233;es aux mari&#233;s.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Des h&#233;bergements sont-ils disponibles &#224; proximit&#233;&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Plusieurs h&#244;tels et g&#238;tes sont disponibles &#224; Sherbrooke et dans les environs. Une liste de suggestions vous sera transmise sous peu.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Puis-je amener des enfants&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Les enfants sont les bienvenus&#x202F;! Merci d&#8217;indiquer leur nombre lors de votre RSVP.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Quelle est la date limite pour r&#233;pondre&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Merci de nous faire parvenir votre r&#233;ponse avant le 1er juin 2027.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Y a-t-il un parking sur place&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Oui, le Domaine 360 dispose d&#8217;un stationnement sur place.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Peut-on faire une liste de souhaits&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Votre pr&#233;sence est le plus beau des cadeaux&#x202F;! Une liste sera disponible bient&#244;t.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Y aura-t-il des options v&#233;g&#233;tariennes ou sans gluten&#x202F;?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Absolument. Merci de pr&#233;ciser vos restrictions lors de votre RSVP.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Les enfants sont-ils les bienvenus?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Oui, les enfants sont permis! Cela dit, nous vous recommandons fortement de les laisser &#224; la maison pour que vous puissiez profiter pleinement de la soir&#233;e. Si vous souhaitez tout de m&#234;me les amener, faites-le-nous savoir &#224; l&#8217;avance.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Quel est le code vestimentaire?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Nous vous demandons d&#8217;&#233;viter le noir et le blanc (sauf pour une chemise blanche, bien s&#251;r!). L&#8217;id&#233;e, c&#8217;est un look festif et color&#233;. C&#8217;est le moment id&#233;al pour sortir vos plus belles tenues!</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Les plus-1 sont-ils permis?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Tout sera indiqu&#233; sur votre invitation lorsque vous la recevrez. Restez &#224; l&#8217;aff&#251;t!</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Quelles sont les options d&#8217;h&#233;bergement?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">On aurait ador&#233; pouvoir loger tout le monde sur place, mais les places sont tr&#232;s limit&#233;es et d&#233;j&#224; attribu&#233;es. Il y a cependant de nombreux Airbnb &#224; proximit&#233; du lieu de la r&#233;ception &#8212; nous vous encourageons &#224; r&#233;server t&#244;t!</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Y a-t-il des frais &#224; pr&#233;voir?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Si vous venez uniquement &#224; la r&#233;ception, c&#8217;est enti&#232;rement sans frais. Pour ceux qui logent sur place, nous vous contacterons individuellement avec tous les d&#233;tails.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Comment puis-je offrir un cadeau?</span><span class="faq-chevron">&#9660;</span></div><div class="faq-a">Nous n&#8217;acceptons pas de cadeaux physiques. Une page d&#233;di&#233;e aux cadeaux sera disponible prochainement &#8212; nous vous tiendrons au courant!</div></div>
     </div>
   </div>
   <footer class="ef-footer"><div class="ft-mono">E &amp; F</div><div class="ft-date">01 &#183; 07 &#183; 2027</div><div class="ft-tag">Le meilleur reste &#224; venir </div></footer>
