@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Eyden &amp; Fran&#231;ois &#8212; 01.07.2027</title>
-<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Special+Elite&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Special+Elite&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --cream:#f5f0e8;--blush:#dfd7d5;--blush-warm:#d4cac7;--blush-deep:#c9beba;
@@ -21,8 +21,8 @@ body{font-family:'Playfair Display',serif;font-weight:400;background:var(--cream
 #passcode-screen.hidden{opacity:0;pointer-events:none;}
 .lk-illo{font-size:3.5rem;line-height:1;animation:sway 5s ease-in-out infinite;}
 @keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-.lk-eye{font-family:'Beth Ellen',cursive;font-size:.58rem;letter-spacing:.55em;text-transform:uppercase;color:var(--sage-dark);}
-.lk-title{font-family:'Beth Ellen',cursive;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--burgundy);text-align:center;line-height:1.1;}
+.lk-eye{font-family:'Playfair Display',serif;font-size:.58rem;letter-spacing:.55em;text-transform:uppercase;color:var(--sage-dark);}
+.lk-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--burgundy);text-align:center;line-height:1.1;}
 .lk-sub{font-size:.8rem;color:var(--sage-dark);letter-spacing:.08em;}
 .lk-grp{display:flex;flex-direction:column;align-items:center;gap:.7rem;}
 .lk-lbl{font-size:.5rem;letter-spacing:.45em;text-transform:uppercase;color:var(--sage-dark);}
@@ -49,7 +49,7 @@ nav a:hover{color:#fff;}
 .home-hero{
   position:relative;
   width:100%;
-  min-height:calc(100vh - 54px);
+  height:calc(100vh - 54px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:var(--cream);
   overflow:hidden;
@@ -61,7 +61,7 @@ nav a:hover{color:#fff;}
   content:'';
   position:absolute;
   inset:0;
-  background:rgba(245,240,235,0.6);
+  background:rgba(245,240,235,0.62);
   z-index:1;
   pointer-events:none;
 }
@@ -74,8 +74,8 @@ nav a:hover{color:#fff;}
   animation:fu 1s ease .2s both;
 }
 .hero-eyebrow{
-  font-family:'Beth Ellen',cursive;font-size:.56rem;letter-spacing:.55em;text-transform:uppercase;
-  color:var(--sage-dark);margin-bottom:1rem;
+  font-family:'Playfair Display',serif;font-size:.56rem;letter-spacing:.55em;text-transform:uppercase;
+  color:var(--burgundy);margin-bottom:1rem;
 }
 .hero-names{
   font-family:'Beth Ellen',cursive;
@@ -86,136 +86,75 @@ nav a:hover{color:#fff;}
 }
 .hero-amp{
   display:block;font-size:clamp(1.6rem,3.2vw,2.8rem);
-  font-style:italic;color:var(--sage-dark);margin:.4em 0;
+  font-style:italic;color:var(--burgundy);margin:.4em 0;
 }
 .hero-date-line{
-  font-family:'Beth Ellen',cursive;font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;
-  color:var(--text-muted);margin-top:1.2rem;
+  font-family:'Playfair Display',serif;font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--burgundy);margin-top:1.2rem;
 }
 
 /*  POSTCARD STRIP  */
-.strip-wrap{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  z-index:0;
-  opacity:0.35;
-}
-.strip-wrap::before,.strip-wrap::after{
-  content:'';position:absolute;top:0;bottom:0;width:100px;z-index:3;pointer-events:none;
-}
-.strip-wrap::before{left:0;background:linear-gradient(to right, rgba(245,240,235,0.4) 0%, transparent 100%);}
-.strip-wrap::after {right:0;background:linear-gradient(to left, rgba(245,240,235,0.4) 0%, transparent 100%);}
 
-.strip-track{
-  display:flex;
-  gap:0;
-  padding:0;
-  width:max-content;
-  height:100%;
-  align-items:stretch;
-  animation:stripScroll 55s linear infinite;
-}
-.strip-track:hover{animation-play-state:running;}
-@keyframes stripScroll{
-  0%  {transform:translateX(0);}
+
+
+
+
+
   100%{transform:translateX(-50%);}
 }
 
 /*  POSTCARD CARD  */
-.postcard{
-  flex-shrink:0;
-  width:220px;
-  background:#ede7d4;
-  border:1px solid rgba(47,13,7,.15);
-  box-shadow:3px 4px 0 rgba(47,13,7,.12), 6px 8px 18px rgba(47,13,7,.08);
-  position:relative;
-  transform-origin:center bottom;
-  transition:transform .3s ease, box-shadow .3s ease;
-  cursor:default;
-}
-/* Random slight tilts — applied via JS */
-.postcard:hover{
-  transform:translateY(-6px) rotate(0deg) !important;
-  box-shadow:4px 6px 0 rgba(47,13,7,.15), 8px 14px 28px rgba(47,13,7,.14);
-}
 
-/* Photo area */
-.pc-photo{
-  width:100%;height:175px;
-  object-fit:cover;
-  display:block;
-  border-bottom:1px solid rgba(47,13,7,.1);
-  filter:sepia(.32) saturate(.72) contrast(.9) brightness(1.05);
-}
+
+
 
 /* White bottom section */
-.pc-body{display:none;
-  padding:10px 12px 12px;
-  background:#ede7d4;
-  position:relative;
-}
 
-/* stamp removed */
+
+
 
 /* Postmark circle */
-.pc-postmark{
-  position:absolute;
-  top:6px;right:8px;
-  width:42px;height:42px;
-  border:1.5px solid rgba(47,13,7,.25);
-  border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  opacity:.55;
-}
-.pc-postmark-top{font-family:'Special Elite',monospace;font-size:.3rem;letter-spacing:.08em;text-transform:uppercase;color:var(--burgundy);}
-.pc-postmark-line{width:28px;height:1px;background:var(--burgundy);margin:1px 0;opacity:.6;}
-.pc-postmark-bot{font-family:'Special Elite',monospace;font-size:.28rem;letter-spacing:.06em;color:var(--burgundy);}
+
+
+
+
 
 /* Handwritten city name */
-.pc-city{
-  font-family:'Special Elite',monospace;
-  font-size:.95rem;
-  color:var(--burgundy);
-  margin-right:52px;
-  line-height:1.1;
-}
-.pc-lines{margin-top:6px;display:flex;flex-direction:column;gap:4px;}
-.pc-line{height:1px;background:rgba(47,13,7,.12);}
-/* signature removed */
+
+
+
+
 
 /*  COUNTDOWN BELOW STRIP  */
-.hero-countdown-block{position:relative;z-index:2;margin-top:2.5rem;
-  position:relative;z-index:2;
-  margin-top:2.5rem;
+.hero-countdown-block{position:relative;z-index:10;margin-top:2.5rem;
   display:flex;flex-direction:column;align-items:center;gap:1rem;
   animation:fu 1s ease .9s both;
 }
 .cd-label-above{
-  font-family:'Beth Ellen',cursive;font-style:italic;font-size:1rem;
-  color:var(--sage-dark);
+  font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;
+  color:var(--burgundy);
 }
-.ef-countdown{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-radius:14px;overflow:hidden;}
-.cd-cell{display:flex;flex-direction:column;align-items:center;padding:1rem 1.9rem;border:2px solid var(--burgundy);border-right:none;background:rgba(245,240,235,0.88);}
+.ef-countdown{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-radius:14px;overflow:hidden;position:relative;z-index:10;}
+.cd-cell{display:flex;flex-direction:column;align-items:center;padding:1rem 1.9rem;border:2px solid var(--burgundy);border-right:none;background:rgba(245,240,235,1);}
 .cd-cell:last-child{border-right:2px solid var(--burgundy);}
-.cd-n{font-family:'Beth Ellen',cursive;font-size:clamp(1.9rem,4vw,3rem);color:var(--burgundy);line-height:1;}
-.cd-l{font-family:'Beth Ellen',cursive;font-size:.4rem;letter-spacing:.42em;text-transform:uppercase;color:var(--sage-dark);margin-top:.3rem;}
+.cd-n{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);color:var(--burgundy);line-height:1;}
+.cd-l{font-family:'Playfair Display',serif;font-size:.4rem;letter-spacing:.42em;text-transform:uppercase;color:var(--burgundy);margin-top:.3rem;}
 
 /*  INNER PAGES  */
 .inner-hero{padding:3.5rem 2rem 2.8rem;text-align:center;background:var(--cream);border-bottom:3px solid var(--burgundy);position:relative;z-index:1;}
 .s-illo{font-size:2rem;margin-bottom:.5rem;line-height:1;}
-.s-tag{font-family:'Beth Ellen',cursive;font-size:.52rem;letter-spacing:.52em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:.7rem;display:flex;align-items:center;justify-content:center;gap:.8rem;}
+.s-tag{font-family:'Playfair Display',serif;font-size:.52rem;letter-spacing:.52em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:.7rem;display:flex;align-items:center;justify-content:center;gap:.8rem;}
 .s-tag::before,.s-tag::after{content:'';color:var(--sage);}
-.s-head{font-family:'Beth Ellen',cursive;font-size:clamp(2.8rem,6vw,5.5rem);color:var(--burgundy);line-height:1.2;}
+.s-head{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);color:var(--burgundy);line-height:1.2;}
 .s-head em{font-style:italic;color:var(--sage-dark);}
-.s-sub{font-family:'Beth Ellen',cursive;font-style:italic;font-size:1rem;color:var(--sage-dark);margin-top:.5rem;}
+.s-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--sage-dark);margin-top:.5rem;}
 
 /*  VENUE  */
 #page-venue .venue-body{padding:4rem 2rem 6rem;background:var(--cream);}
 .loc-card{max-width:560px;width:100%;margin:2.5rem auto 0;display:block;background:rgba(223,215,213,.92);border:3px solid var(--burgundy);position:relative;z-index:1;border-radius:18px;overflow:hidden;}
 .loc-card::before{display:none;}
 .loc-info{padding:2.8rem 2.4rem;display:flex;flex-direction:column;gap:1.7rem;}
-.loc-venue-name{font-family:'Beth Ellen',cursive;font-size:2.8rem;color:var(--burgundy);line-height:1.1;}
+.loc-venue-name{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--burgundy);line-height:1.1;}
 .loc-dt{display:flex;flex-direction:column;gap:.3rem;}
 .loc-lbl{font-family:'Playfair Display',serif;font-size:.48rem;letter-spacing:.42em;text-transform:uppercase;color:var(--sage-dark);}
 .loc-val{font-size:.88rem;color:var(--text-mid);line-height:1.7;}
@@ -247,7 +186,7 @@ nav a:hover{color:#fff;}
 .sub-btn:hover{background:var(--sage-dark);}
 #rsvp-success{display:none;text-align:center;padding:3rem 1rem;}
 .suc-illo{font-size:3rem;margin-bottom:1rem;animation:sway 3s ease-in-out infinite;}
-.suc-msg{font-family:'Beth Ellen',cursive;font-size:2.5rem;color:var(--burgundy);line-height:1.2;margin-bottom:.7rem;}
+.suc-msg{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--burgundy);line-height:1.2;margin-bottom:.7rem;}
 .suc-sub{font-family:'Playfair Display',serif;font-size:.75rem;color:var(--sage-dark);letter-spacing:.1em;}
 
 /*  FAQ  */
@@ -255,7 +194,7 @@ nav a:hover{color:#fff;}
 .faq-list{max-width:700px;width:100%;margin:2.5rem auto 0;border-radius:16px;overflow:hidden;border:2px solid var(--burgundy);}
 .faq-item{border-bottom:2px solid var(--burgundy);overflow:hidden;}
 .faq-item:first-child{border-top:none;}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 1rem;cursor:pointer;font-family:'Beth Ellen',cursive;font-size:1.5rem;color:var(--burgundy);user-select:none;transition:color .2s;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 1rem;cursor:pointer;font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--burgundy);user-select:none;transition:color .2s;}
 .faq-q:hover{color:var(--sage-dark);}
 .faq-chevron{font-size:.75rem;color:var(--sage-dark);flex-shrink:0;transition:transform .35s ease;}
 .faq-item.open .faq-chevron{transform:rotate(180deg);}
@@ -272,7 +211,7 @@ nav a:hover{color:#fff;}
 .contact-card{background:rgba(237,231,212,.94);border:2px solid var(--burgundy);padding:2.4rem 3rem;display:flex;flex-direction:column;gap:1.2rem;position:relative;box-shadow:0 4px 24px rgba(47,13,7,.15);border-radius:20px;}
 .contact-card::before{content:'';position:absolute;top:-.7rem;left:50%;transform:translateX(-50%);background:var(--cream);color:var(--burgundy);font-size:.8rem;padding:0 .4rem;}
 .cc-role{font-family:'Playfair Display',serif;font-size:.48rem;letter-spacing:.44em;text-transform:uppercase;color:var(--sage-dark);}
-.cc-name{font-family:'Beth Ellen',cursive;font-size:2.4rem;color:var(--burgundy);line-height:1.1;}
+.cc-name{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--burgundy);line-height:1.1;}
 .cc-detail{display:flex;flex-direction:column;gap:.25rem;}
 .cc-lbl{font-family:'Playfair Display',serif;font-size:.46rem;letter-spacing:.4em;text-transform:uppercase;color:var(--sage);}
 .cc-val{font-size:.86rem;color:var(--text-mid);line-height:1.6;}
@@ -285,8 +224,8 @@ nav a:hover{color:#fff;}
 .ef-footer{background:var(--burgundy);text-align:center;padding:3rem 2rem;position:relative;}
 .ef-footer::before{content:'    ';position:absolute;top:.8rem;left:0;right:0;text-align:center;color:rgba(245,240,235,.2);font-size:.7rem;letter-spacing:.5em;}
 .ft-mono{font-family:'Beth Ellen',cursive;font-size:2.5rem;color:var(--cream);letter-spacing:.06em;margin-bottom:.6rem;}
-.ft-date{font-family:'Beth Ellen',cursive;font-size:.5rem;letter-spacing:.48em;text-transform:uppercase;color:rgba(245,240,235,.6);}
-.ft-tag{font-family:'Beth Ellen',cursive;font-style:italic;font-size:.75rem;color:var(--sage-light);margin-top:1.4rem;}
+.ft-date{font-family:'Playfair Display',serif;font-size:.5rem;letter-spacing:.48em;text-transform:uppercase;color:rgba(245,240,235,.6);}
+.ft-tag{font-family:'Playfair Display',serif;font-style:italic;font-size:.75rem;color:var(--sage-light);margin-top:1.4rem;}
 
 /*  REVEAL  */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .85s ease,transform .85s ease;}
@@ -302,8 +241,8 @@ nav a:hover{color:#fff;}
   .form-row{grid-template-columns:1fr;}
   .cd-cell{padding:.85rem 1.1rem;}
   .rsvp-wrap{padding:2rem 1.4rem;}
-  .postcard{width:180px;}
-  .pc-photo{height:140px;}
+  
+  
 }
 
 /*  CONTACT PAGE BACKGROUND  */
@@ -315,6 +254,33 @@ nav a:hover{color:#fff;}
   background: rgba(245,240,235,0.15);
   position: relative;
   min-height: 500px;
+}
+
+/* ── BACKGROUND PHOTO STRIP ── */
+.bg-strip {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.55;
+}
+.bg-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  animation: bgScroll 112s linear infinite;
+}
+@keyframes bgScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.bg-slide {
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 </style>
 <script>
@@ -368,7 +334,7 @@ document.addEventListener('DOMContentLoaded',function(){
   <a onclick="showPage('home')" class="nav-mono">E &amp; F</a>
   <a onclick="showPage('faq')">FAQ</a>
   <a onclick="showPage('contact')">Contact</a>
-  <a onclick="endSession()" style="cursor:pointer;opacity:.75;">&#128274; Quitter</a>
+  <a onclick="endSession()" style="cursor:pointer;opacity:1;">&#128274; Quitter</a>
 </nav>
 
 <!--  HOME  -->
@@ -383,19 +349,15 @@ document.addEventListener('DOMContentLoaded',function(){
         <span class="hero-amp">&amp;</span>
         <span style="display:block">Fran&#231;ois</span>
       </div>
-      <div class="hero-date-line">Jeudi &#183; 1er Juillet &#183; Deux Mille Vingt-Sept</div>
     </div>
 
-    <!-- Rolling postcard strip -->
-    <div class="strip-wrap">
-      <div class="strip-track" id="strip-track">
-        <!-- Cards injected by JS -->
-      </div>
+    <!-- Background photo strip -->
+    <div class="bg-strip">
+      <div class="bg-track" id="bg-track"></div>
     </div>
 
     <!-- Countdown below -->
     <div class="hero-countdown-block">
-      <div class="cd-label-above">Compte &#224; rebours jusqu&#8217;au grand jour</div>
       <div class="ef-countdown">
         <div class="cd-cell"><div class="cd-n" id="cd-days">&#8212;</div><div class="cd-l">Jours</div></div>
         <div class="cd-cell"><div class="cd-n" id="cd-hours">&#8212;</div><div class="cd-l">Heures</div></div>
@@ -578,7 +540,6 @@ const FACE_POS=[
   "50% 30%"
 ];
 
-// Build postcard strip on DOM ready
 window.endSession = function() {
   sessionStorage.removeItem('ef_ok');
   location.reload();
@@ -586,49 +547,31 @@ window.endSession = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ── STRIP
-  var track = document.getElementById('strip-track');
-  if (!track) return;
-  var tilts = [-3,1.5,-1,2.5,-2,1,-3.5,2,-1.5,3,-2.5,1.8,-1.2,2.8,-3.2,1.2,-2.2,3.5,-1.8,2.2];
-
-  function makeCard(src, city, code, tileIdx, facePos) {
-    var tilt = tilts[tileIdx % tilts.length];
-    var card = document.createElement('div');
-    card.className = 'postcard';
-    card.style.transform = 'rotate('+tilt+'deg)';
-    card.innerHTML =
-      '<div class="pc-photo-wrap" style="width:260px;height:100%;min-height:calc(100vh - 54px);overflow:hidden;position:relative;">' +
-        '<img src="'+src+'" loading="lazy" style="width:260px;height:100%;min-height:calc(100vh - 54px);object-fit:cover;object-position:'+(facePos||'50% 50%')+';filter:sepia(.32) saturate(.72) contrast(.9) brightness(1.05);"/>' +
-      '</div>' +
-      '<div class="pc-body">' +
-        '<div class="pc-postmark">' +
-          '<div class="pc-postmark-top">E &amp; F</div>' +
-          '<div class="pc-postmark-line"></div>' +
-          '<div class="pc-postmark-line"></div>' +
-          '<div class="pc-postmark-bot">2027</div>' +
-        '</div>' +
-        '<div class="pc-city">'+city+'</div>' +
-        '<div class="pc-lines"><div class="pc-line"></div><div class="pc-line"></div></div>' +
-      '</div>';
-    card.addEventListener('mouseenter', function(){ this.style.transform='rotate(0deg) translateY(-8px)'; });
-    card.addEventListener('mouseleave', function(){ this.style.transform='rotate('+tilt+'deg)'; });
-    return card;
+  // ── BACKGROUND PHOTO STRIP ──
+  var bgTrack = document.getElementById('bg-track');
+  if (bgTrack) {
+    var allPhotos = PHOTOS.concat(PHOTOS); // duplicate for seamless loop
+    allPhotos.forEach(function(src, i) {
+      var img = document.createElement('img');
+      img.className = 'bg-slide';
+      img.src = src;
+      var fp = FACE_POS[i % FACE_POS.length];
+      img.style.objectPosition = fp;
+      img.style.filter = 'sepia(.28) saturate(.78) contrast(.92) brightness(1.04)';
+      bgTrack.appendChild(img);
+    });
   }
 
-  // Two passes for seamless infinite scroll
-  for (var pass = 0; pass < 2; pass++) {
-    for (var i = 0; i < PHOTOS.length; i++) {
-      var cap = CAPTIONS[i] || ['Voyage','INT',''];
-      track.appendChild(makeCard(PHOTOS[i], cap[0], cap[1], i + pass*20, FACE_POS[i % FACE_POS.length]));
-    }
-  }
-
-  // ── COUNTDOWN
+  // ── COUNTDOWN ──
   var wed = new Date('2027-07-01T00:00:00');
   function tick() {
     var d = wed - new Date();
-    var ids = ['cd-days','cd-hours','cd-minutes','cd-seconds'];
-    if (d <= 0) { ids.forEach(function(id){ document.getElementById(id).textContent='00'; }); return; }
+    if (d <= 0) {
+      ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(function(id){
+        document.getElementById(id).textContent = '00';
+      });
+      return;
+    }
     document.getElementById('cd-days').textContent    = String(Math.floor(d/86400000)).padStart(2,'0');
     document.getElementById('cd-hours').textContent   = String(Math.floor(d%86400000/3600000)).padStart(2,'0');
     document.getElementById('cd-minutes').textContent = String(Math.floor(d%3600000/60000)).padStart(2,'0');
@@ -637,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
   tick();
   setInterval(tick, 1000);
 
-  // ── SCROLL REVEAL
+  // ── SCROLL REVEAL ──
   var obsv = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('visible'); obsv.unobserve(e.target); }
@@ -645,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(function(el){ obsv.observe(el); });
 
-  // ── PAGE ROUTING
+  // ── PAGE ROUTING ──
   window.showPage = function(id) {
     document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
     document.getElementById('page-'+id).classList.add('active');
@@ -658,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 50);
   };
 
-  // ── FAQ
+  // ── FAQ ──
   window.toggleFaq = function(btn) {
     var item = btn.parentElement;
     var wasOpen = item.classList.contains('open');
@@ -666,7 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!wasOpen) item.classList.add('open');
   };
 
-  // ── RSVP
+  // ── RSVP ──
   window.submitRSVP = function(e) {
     e.preventDefault();
     document.getElementById('rsvp-form').style.display = 'none';
